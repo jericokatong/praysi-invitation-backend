@@ -3,7 +3,7 @@ import { AppModule } from './app.module';
 import { Get, Post, ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, { cors: true });
+  const app = await NestFactory.create(AppModule);
   // Konfigurasi CORS
   app.enableCors({
     origin: ['http://localhost:4200', 'https://praysi-invitation.vercel.app/'], // Ganti dengan origin frontend Anda
