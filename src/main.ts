@@ -10,6 +10,7 @@ async function bootstrap() {
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Metode yang diizinkan
     allowedHeaders: ['Content-Type', 'Authorization'], // Header yang diizinkan
     credentials: true, // Jika menggunakan cookies atau authorization headers
+    preflightContinue: true,
   });
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(3000);
