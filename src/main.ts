@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { Get, Post, ValidationPipe } from '@nestjs/common';
+import { RequestMethod } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -12,6 +13,11 @@ async function bootstrap() {
     credentials: true, // Jika menggunakan cookies atau authorization headers
   });
   app.useGlobalPipes(new ValidationPipe());
+  app.getHttpAdapter().get('*', (req, res) => {
+    if (req.method === 'OPTIONS') {
+      res.send();
+    }
+  });
   await app.listen(3000);
 }
 bootstrap();
