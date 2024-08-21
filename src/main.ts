@@ -1,18 +1,21 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { Get, Post, ValidationPipe } from '@nestjs/common';
-import { RequestMethod } from '@nestjs/common';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  // Konfigurasi CORS
-  // app.enableCors({
-  //   origin: 'https://praysi-invitation.vercel.app',
-  //   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  //   allowedHeaders: ['Content-Type', 'Authorization'],
-  //   credentials: true,
-  // });
+
+  // Mengaktifkan CORS dengan konfigurasi default
+  app.enableCors({
+    origin: 'http://localhost:4200', // Mengizinkan akses hanya dari origin ini
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    credentials: true, // Mengizinkan pengiriman cookie dan header otentikasi
+  });
+
+  // Menggunakan ValidationPipe secara global
   app.useGlobalPipes(new ValidationPipe());
+
   await app.listen(3000);
 }
+
 bootstrap();
