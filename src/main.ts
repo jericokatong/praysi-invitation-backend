@@ -7,9 +7,10 @@ async function bootstrap() {
 
   // Mengaktifkan CORS dengan konfigurasi default
   app.enableCors({
-    origin: 'http://localhost:4200', // Mengizinkan akses hanya dari origin ini
+    origin: 'http://localhost:4200',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    credentials: true, // Mengizinkan pengiriman cookie dan header otentikasi
+    credentials: true, // Mengizinkan cookie atau header otentikasi
+    allowedHeaders: 'Content-Type, Authorization', // Menyertakan header yang diperlukan
   });
 
   // Menggunakan ValidationPipe secara global
