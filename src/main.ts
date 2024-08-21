@@ -7,7 +7,7 @@ async function bootstrap() {
 
   // Mengaktifkan CORS dengan konfigurasi default
   app.enableCors({
-    origin: 'http://localhost:4200',
+    origin: ['http://localhost:4200', 'https://praysi-invitation.vercel.app'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true, // Mengizinkan cookie atau header otentikasi
     allowedHeaders: 'Content-Type, Authorization', // Menyertakan header yang diperlukan
